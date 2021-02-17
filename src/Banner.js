@@ -29,9 +29,7 @@ function Banner() {
 
     // Call the function to fetch
     fetchData();
-  }, [])
-
-  console.log(movie)
+  }, []);
 
   return (
     <header 
@@ -39,18 +37,17 @@ function Banner() {
       style={{
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
         backgroundSize: "cover",
-        backgroundPosition: "center center",
+        backgroundPosition: "top",
     }}>
       
       <div className="banner__contents">
-        <h1 className="banner__title">Movie Name</h1>
+        <h1 className="banner__title">{movie?.title || movie?.name || movie?.original_name}</h1>
         <div className="banner__buttons">
           <button className="banner__button">Play</button>
           <button className="banner__button">My list</button>
         </div>
         <h1 className="banner__description">
-          {truncate(`
-          This is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test descriptionThis is a test description`, 150)}
+          {truncate(movie?.overview, 150)}
         </h1>
       </div>
 
